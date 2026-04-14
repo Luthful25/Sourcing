@@ -1,0 +1,444 @@
+.about-page {
+    background: #ededed;
+}
+
+.about-main {
+    padding-bottom: clamp(2.5rem, 5vw, 4rem);
+    background: #ededed;
+}
+
+.about-hero {
+    position: relative;
+    min-height: clamp(220px, 30vw, 280px);
+    overflow: hidden;
+    border-bottom: 1px solid rgba(39, 56, 86, 0.14);
+    background:
+        linear-gradient(180deg, rgba(244, 239, 232, 0.82), rgba(244, 239, 232, 0.82)),
+        url("assets/equalstock-Mv4gduCPx5Q-unsplash.jpg") center/cover no-repeat;
+}
+
+.about-hero-inner {
+    min-height: clamp(220px, 30vw, 280px);
+    display: grid;
+    align-content: center;
+    gap: 0.72rem;
+    max-width: 760px;
+}
+
+.about-breadcrumb {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.55rem;
+    color: #56637a;
+    font-size: 0.86rem;
+    font-weight: 500;
+}
+
+.about-breadcrumb a {
+    transition: color 0.2s ease;
+}
+
+.about-breadcrumb a:hover {
+    color: #1e61d8;
+}
+
+.about-hero h1 {
+    margin: 0;
+    color: #2e4466;
+    font-size: clamp(2rem, 5vw, 3rem);
+    line-height: 1.06;
+    letter-spacing: -0.01em;
+}
+
+.about-intro,
+.about-highlight-cards {
+    padding-top: clamp(2rem, 4vw, 2.8rem);
+}
+
+.about-intro-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 0.95fr) minmax(0, 1.05fr);
+    gap: clamp(1.1rem, 2.4vw, 1.8rem);
+    align-items: start;
+}
+
+.about-intro-media {
+    margin: 0;
+    border: 1px solid rgba(31, 46, 75, 0.14);
+    background: #fff;
+}
+
+.about-intro-media img {
+    width: 100%;
+    aspect-ratio: 4 / 2.45;
+    object-fit: cover;
+    display: block;
+}
+
+.about-intro-copy {
+    display: grid;
+    gap: 1rem;
+}
+
+.about-intro-copy p {
+    margin: 0;
+    color: #273a59;
+    font-size: clamp(1rem, 1.28vw, 1.08rem);
+    line-height: 1.72;
+    text-align: justify;
+    text-justify: inter-word;
+}
+
+.about-highlight-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 1rem;
+}
+
+.about-highlight-card {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    min-height: 100%;
+    padding: clamp(1.2rem, 2.2vw, 1.7rem);
+    border-radius: 14px;
+    border: 1px solid rgba(31, 46, 75, 0.12);
+    background: #f7f7f7;
+}
+
+.about-highlight-card h2 {
+    margin: 0;
+    color: #25385a;
+    font-size: clamp(1.55rem, 2.6vw, 2rem);
+    font-weight: 500;
+    letter-spacing: -0.01em;
+}
+
+.about-card-line {
+    width: 50px;
+    height: 3px;
+    border-radius: 999px;
+    margin: 0.88rem 0 1rem;
+    background: #c4c7cc;
+}
+
+.about-highlight-card p {
+    margin: 0;
+    color: #2f405f;
+    font-size: 1.05rem;
+    line-height: 1.7;
+    text-align: justify;
+    text-justify: inter-word;
+}
+
+.about-card-link {
+    margin-top: auto;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 40px;
+    padding: 0.58rem 1.15rem;
+    border-radius: 6px;
+    border: 1px solid rgba(223, 178, 57, 0.6);
+    background: #eac462;
+    color: #2b2f36;
+    font-size: 0.82rem;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    transition: transform 0.2s ease, background 0.2s ease;
+}
+
+.about-card-link:hover {
+    background: #efcb70;
+    transform: translateY(-1px);
+}
+
+.about-detail {
+    padding-top: clamp(2rem, 4vw, 2.9rem);
+}
+
+.about-detail-shell {
+    max-width: 1060px;
+}
+
+.about-detail-shell h2 {
+    margin: 0;
+    color: #24395d;
+    font-size: clamp(2rem, 4vw, 2.9rem);
+    line-height: 1.14;
+    letter-spacing: -0.01em;
+}
+
+.about-detail-shell p {
+    margin: 1.05rem 0 0;
+    color: #273b5a;
+    font-size: clamp(0.98rem, 1.2vw, 1.08rem);
+    line-height: 1.7;
+    text-align: justify;
+    text-justify: inter-word;
+}
+
+.about-detail-media {
+    margin: 1.4rem auto 0;
+    width: min(760px, 100%);
+    border: 1px solid rgba(32, 47, 77, 0.14);
+    background: #ffffff;
+}
+
+.about-detail-media img {
+    width: 100%;
+    height: auto;
+    display: block;
+    object-fit: cover;
+}
+
+.about-philosophy {
+    padding-top: clamp(2rem, 4vw, 2.8rem);
+}
+
+.about-philosophy-shell {
+    max-width: 1060px;
+}
+
+.about-philosophy-block + .about-philosophy-block {
+    margin-top: 1.1rem;
+}
+
+.about-philosophy-block h3 {
+    margin: 0;
+    color: #233a5f;
+    font-size: clamp(1.5rem, 2.5vw, 2rem);
+    line-height: 1.2;
+}
+
+.about-philosophy-block p {
+    margin: 0.6rem 0 0;
+    color: #263a5b;
+    font-size: clamp(0.97rem, 1.2vw, 1.05rem);
+    line-height: 1.7;
+    text-align: justify;
+    text-justify: inter-word;
+}
+
+.about-lotus-figure {
+    width: min(660px, 100%);
+    margin: 1.35rem auto 0;
+    padding: clamp(0.5rem, 1vw, 0.75rem);
+    border: 1px solid rgba(36, 57, 93, 0.1);
+    border-radius: 16px;
+    background: linear-gradient(180deg, #ffffff 0%, #f8fafd 100%);
+}
+
+.about-lotus-figure svg {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+.about-lotus-figure img {
+    width: 100%;
+    height: auto;
+    display: block;
+    border-radius: 12px;
+}
+
+.about-lotus-figure .lotus-label {
+    font-family: "Poppins", "Segoe UI", sans-serif;
+    font-size: 0.9rem;
+    letter-spacing: 0.01em;
+}
+
+.about-lotus-caption {
+    margin: 0.7rem 0 0;
+    color: #2a3f62;
+    font-size: clamp(0.9rem, 1.05vw, 0.98rem);
+    line-height: 1.5;
+    text-align: center;
+}
+
+.about-values-notes {
+    margin-top: 1.2rem;
+}
+
+.about-values-notes h4 {
+    margin: 1rem 0 0.5rem;
+    color: #20365a;
+    font-size: clamp(1.05rem, 1.45vw, 1.25rem);
+    line-height: 1.3;
+}
+
+.about-values-notes h4:first-child {
+    margin-top: 0;
+}
+
+.about-values-notes p,
+.about-values-notes li {
+    color: #2b3e60;
+    font-size: clamp(0.95rem, 1.16vw, 1.02rem);
+    line-height: 1.7;
+}
+
+.about-values-notes p {
+    margin: 0;
+}
+
+.about-values-notes ul {
+    margin: 0;
+    padding-left: 1.3rem;
+}
+
+.about-csr {
+    padding-top: clamp(2rem, 4vw, 2.8rem);
+}
+
+.about-csr-shell {
+    max-width: 1060px;
+}
+
+.about-csr-shell h2 {
+    margin: 0;
+    color: #203659;
+    font-size: clamp(2rem, 4vw, 2.8rem);
+    line-height: 1.14;
+}
+
+.about-csr-shell p,
+.about-csr-shell li {
+    color: #2a3c5a;
+    font-size: clamp(0.95rem, 1.15vw, 1.02rem);
+    line-height: 1.68;
+    text-align: justify;
+    text-justify: inter-word;
+}
+
+.about-csr-shell p {
+    margin: 0.85rem 0 0;
+}
+
+.about-csr-group {
+    margin-top: 1rem;
+}
+
+.about-csr-group h3 {
+    margin: 0;
+    color: #22395d;
+    font-size: clamp(1.1rem, 1.6vw, 1.36rem);
+    line-height: 1.3;
+}
+
+.about-csr-group ul {
+    margin: 0.65rem 0 0;
+    padding-left: 1.25rem;
+}
+
+.about-csr-note {
+    margin-top: 1rem;
+}
+
+.about-product-links {
+    padding-top: clamp(1.8rem, 3.6vw, 2.4rem);
+}
+
+.about-product-links-grid {
+    display: grid;
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+    gap: 1rem;
+}
+
+.about-product-link-card {
+    text-align: center;
+}
+
+.about-product-link-card figure {
+    margin: 0;
+    border: 1px solid rgba(32, 47, 76, 0.12);
+    background: #ffffff;
+}
+
+.about-product-link-card img {
+    width: 100%;
+    aspect-ratio: 4 / 3;
+    object-fit: cover;
+    display: block;
+}
+
+.about-product-link-card h4 {
+    margin: 0.62rem 0 0;
+    color: #223659;
+    font-size: 0.92rem;
+    line-height: 1.35;
+    font-weight: 600;
+}
+
+@media (max-width: 1080px) {
+    .about-intro-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .about-highlight-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .about-product-links-grid {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+}
+
+@media (max-width: 760px) {
+    .about-hero {
+        min-height: 190px;
+    }
+
+    .about-hero-inner {
+        min-height: 190px;
+        gap: 0.55rem;
+    }
+
+    .about-breadcrumb {
+        font-size: 0.8rem;
+    }
+
+    .about-highlight-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .about-highlight-card p {
+        font-size: 0.98rem;
+    }
+
+    .about-detail-media {
+        width: 100%;
+    }
+
+    .about-lotus-figure {
+        width: min(560px, 100%);
+    }
+
+    .about-lotus-figure .lotus-label {
+        font-size: 0.8rem;
+    }
+
+    .about-product-links-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 0.85rem;
+    }
+
+    .about-product-link-card h4 {
+        font-size: 0.88rem;
+    }
+}
+
+@media (max-width: 520px) {
+    .about-lotus-figure .lotus-label {
+        font-size: 0.72rem;
+    }
+
+    .about-lotus-caption {
+        font-size: 0.86rem;
+    }
+
+    .about-product-links-grid {
+        grid-template-columns: 1fr;
+    }
+}

@@ -1,0 +1,124 @@
+﻿.privacy-page {
+    background: #efefef;
+}
+
+.privacy-main {
+    padding-bottom: 4.5rem;
+}
+
+.privacy-banner {
+    position: relative;
+    border-bottom: 1px solid rgba(34, 45, 70, 0.1);
+    background:
+        linear-gradient(180deg, rgba(235, 224, 210, 0.9), rgba(235, 224, 210, 0.94)),
+        url("assets/fabric1.jpg") center/cover no-repeat;
+}
+
+.privacy-banner-inner {
+    text-align: center;
+    padding: 3.1rem 0 2.3rem;
+}
+
+.privacy-breadcrumb {
+    margin-bottom: 0.62rem;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.48rem;
+    color: #70757f;
+    font-size: 0.72rem;
+    line-height: 1;
+}
+
+.privacy-breadcrumb a:hover {
+    color: #303743;
+}
+
+.privacy-banner h1 {
+    margin: 0;
+    color: #2a3343;
+    font-size: clamp(1.5rem, 3vw, 2rem);
+    font-weight: 500;
+    letter-spacing: 0.01em;
+}
+
+.privacy-document {
+    padding: 1.2rem 0 0;
+}
+
+.privacy-document-shell {
+    width: min(980px, calc(100% - 44px));
+    margin: 0 auto;
+    padding: 1.15rem 1.15rem 1.45rem;
+    background: #ffffff;
+    border: 1px solid rgba(35, 46, 64, 0.1);
+    border-radius: 2px;
+}
+
+.privacy-document-shell h2 {
+    margin: 0;
+    color: #111c31;
+    text-align: center;
+    font-size: 1.7rem;
+    font-weight: 700;
+    line-height: 1.22;
+}
+
+.privacy-document-shell h3 {
+    margin: 1rem 0 0;
+    color: #1f2f4c;
+    font-size: 0.94rem;
+    font-weight: 700;
+    line-height: 1.45;
+}
+
+.privacy-document-shell h4 {
+    margin: 0.85rem 0 0;
+    color: #203154;
+    font-size: 0.82rem;
+    font-weight: 700;
+    line-height: 1.45;
+}
+
+.privacy-document-shell p,
+.privacy-document-shell li {
+    margin: 0.5rem 0 0;
+    color: #243654;
+    font-size: 0.74rem;
+    line-height: 1.72;
+    text-align: justify;
+    text-justify: inter-word;
+}
+
+.privacy-document-shell ul {
+    margin: 0.35rem 0 0;
+    padding-left: 1.2rem;
+}
+
+.privacy-document-shell li {
+    margin-top: 0.25rem;
+}
+
+.privacy-document-shell a {
+    color: #35649f;
+    text-decoration: underline;
+    text-underline-offset: 2px;
+}
+
+.privacy-document-shell a:hover {
+    color: #2a5486;
+}
+
+@media (max-width: 700px) {
+    .privacy-banner-inner {
+        padding: 2.6rem 0 2rem;
+    }
+
+    .privacy-document-shell {
+        width: min(980px, calc(100% - 26px));
+        padding: 0.95rem 0.88rem 1.2rem;
+    }
+
+    .privacy-document-shell h2 {
+        font-size: 1.35rem;
+    }
+}

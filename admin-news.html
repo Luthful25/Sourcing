@@ -1,0 +1,561 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Empior Admin | News Dashboard</title>
+    <style>
+        :root {
+            --bg: #f5f7fb;
+            --card: #ffffff;
+            --text: #1f2a3d;
+            --muted: #65748a;
+            --line: #d8e0ec;
+            --primary: #1a73e8;
+            --danger: #c62828;
+            --success: #0b8043;
+        }
+        * { box-sizing: border-box; }
+        body {
+            margin: 0;
+            font-family: "Segoe UI", Arial, sans-serif;
+            background: var(--bg);
+            color: var(--text);
+        }
+        .container {
+            width: min(1120px, 92vw);
+            margin: 28px auto 44px;
+        }
+        .card {
+            background: var(--card);
+            border: 1px solid var(--line);
+            border-radius: 14px;
+            padding: 20px;
+        }
+        h1, h2 { margin: 0 0 14px; }
+        p { margin: 0; color: var(--muted); }
+        .topbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 18px;
+        }
+        .hidden { display: none !important; }
+        .notice {
+            margin: 12px 0 0;
+            padding: 10px 12px;
+            border-radius: 8px;
+            border: 1px solid var(--line);
+            font-size: 14px;
+        }
+        .notice.info { color: #334155; background: #f1f5f9; }
+        .notice.success { color: #065f46; background: #ecfdf3; border-color: #a7f3d0; }
+        .notice.error { color: #7f1d1d; background: #fef2f2; border-color: #fecaca; }
+        .grid {
+            display: grid;
+            gap: 16px;
+            grid-template-columns: repeat(12, 1fr);
+        }
+        .col-5 { grid-column: span 5; }
+        .col-7 { grid-column: span 7; }
+        @media (max-width: 980px) {
+            .col-5, .col-7 { grid-column: span 12; }
+        }
+        form {
+            display: grid;
+            gap: 12px;
+        }
+        label {
+            display: grid;
+            gap: 6px;
+            font-size: 14px;
+            color: #334155;
+        }
+        input, textarea, select, button {
+            font: inherit;
+        }
+        input[type="text"], input[type="password"], textarea, select {
+            border: 1px solid var(--line);
+            border-radius: 8px;
+            padding: 10px 12px;
+            width: 100%;
+            background: #fff;
+        }
+        textarea { min-height: 100px; resize: vertical; }
+        .row {
+            display: grid;
+            gap: 10px;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
+        .row-3 {
+            display: grid;
+            gap: 10px;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+        }
+        @media (max-width: 640px) {
+            .row, .row-3 { grid-template-columns: 1fr; }
+        }
+        .checkbox {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 14px;
+        }
+        .actions {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+        }
+        button {
+            border: 0;
+            border-radius: 8px;
+            padding: 10px 14px;
+            cursor: pointer;
+            background: #e2e8f0;
+            color: #0f172a;
+        }
+        button.primary { background: var(--primary); color: #fff; }
+        button.danger { background: var(--danger); color: #fff; }
+        button.ghost { background: #f8fafc; border: 1px solid var(--line); }
+        button:disabled { opacity: 0.6; cursor: not-allowed; }
+        .table-wrap { overflow-x: auto; }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            min-width: 720px;
+        }
+        th, td {
+            border-bottom: 1px solid var(--line);
+            text-align: left;
+            padding: 10px 8px;
+            vertical-align: top;
+            font-size: 14px;
+        }
+        th { color: #334155; font-weight: 700; }
+        .muted { color: var(--muted); font-size: 13px; }
+        .tag {
+            display: inline-block;
+            border-radius: 999px;
+            padding: 4px 9px;
+            font-size: 12px;
+            background: #e2e8f0;
+            color: #1e293b;
+        }
+        .tag.published { background: #dcfce7; color: #166534; }
+        .tag.draft { background: #f1f5f9; color: #334155; }
+        .tag.featured { background: #dbeafe; color: #1d4ed8; }
+    </style>
+</head>
+<body>
+    <main class="container">
+        <div class="topbar">
+            <h1>News Admin Dashboard</h1>
+            <div class="actions">
+                <a href="news.html"><button type="button" class="ghost">View Public News</button></a>
+                <button type="button" id="logoutBtn" class="danger hidden">Logout</button>
+            </div>
+        </div>
+
+        <section id="loginSection" class="card">
+            <h2>Admin Login</h2>
+            <p>Sign in to manage news posts.</p>
+            <form id="loginForm" style="margin-top:14px; max-width:420px;">
+                <label>
+                    Username
+                    <input type="text" id="loginUsername" name="username" required autocomplete="username">
+                </label>
+                <label>
+                    Password
+                    <input type="password" id="loginPassword" name="password" required autocomplete="current-password">
+                </label>
+                <div class="actions">
+                    <button type="submit" class="primary">Login</button>
+                </div>
+            </form>
+            <div id="loginNotice" class="notice info hidden"></div>
+        </section>
+
+        <section id="dashboardSection" class="hidden">
+            <div class="grid">
+                <section class="card col-5">
+                    <h2 id="formHeading">Add News</h2>
+                    <p>Create a new article or edit an existing one.</p>
+                    <form id="newsForm" style="margin-top:14px;">
+                        <label>
+                            Title
+                            <input type="text" name="title" id="newsTitle" required>
+                        </label>
+                        <div class="row">
+                            <label>
+                                Category
+                                <input type="text" name="category" id="newsCategory" required>
+                            </label>
+                            <label>
+                                Status
+                                <select name="status" id="newsStatus" required>
+                                    <option value="draft">Draft</option>
+                                    <option value="published">Published</option>
+                                </select>
+                            </label>
+                        </div>
+                        <label>
+                            Short Description
+                            <textarea name="shortDescription" id="newsShortDescription" required></textarea>
+                        </label>
+                        <label>
+                            Full Description
+                            <textarea name="fullDescription" id="newsFullDescription" required></textarea>
+                        </label>
+                        <label>
+                            Image Upload
+                            <input type="file" name="image" id="newsImage" accept="image/*">
+                        </label>
+                        <label class="checkbox">
+                            <input type="checkbox" id="newsFeatured" name="featured">
+                            Mark as featured (only one featured news is allowed)
+                        </label>
+
+                        <div class="actions">
+                            <button type="submit" class="primary" id="submitBtn">Create News</button>
+                            <button type="button" class="ghost" id="resetBtn">Reset</button>
+                        </div>
+                    </form>
+                    <div id="formNotice" class="notice info hidden"></div>
+                </section>
+
+                <section class="card col-7">
+                    <h2>News List</h2>
+                    <p>Manage all news posts from here.</p>
+                    <div id="listNotice" class="notice info hidden" style="margin-top:14px;"></div>
+                    <div class="table-wrap" style="margin-top:14px;">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Title</th>
+                                    <th>Category</th>
+                                    <th>Status</th>
+                                    <th>Featured</th>
+                                    <th>Publish Date</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody id="newsTableBody">
+                                <tr><td colspan="6" class="muted">Loading news...</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </section>
+            </div>
+        </section>
+    </main>
+
+    <script>
+        const loginSection = document.getElementById("loginSection");
+        const dashboardSection = document.getElementById("dashboardSection");
+        const logoutBtn = document.getElementById("logoutBtn");
+
+        const loginForm = document.getElementById("loginForm");
+        const loginNotice = document.getElementById("loginNotice");
+
+        const newsForm = document.getElementById("newsForm");
+        const formHeading = document.getElementById("formHeading");
+        const submitBtn = document.getElementById("submitBtn");
+        const resetBtn = document.getElementById("resetBtn");
+        const formNotice = document.getElementById("formNotice");
+        const listNotice = document.getElementById("listNotice");
+        const newsTableBody = document.getElementById("newsTableBody");
+
+        const titleInput = document.getElementById("newsTitle");
+        const categoryInput = document.getElementById("newsCategory");
+        const shortDescriptionInput = document.getElementById("newsShortDescription");
+        const fullDescriptionInput = document.getElementById("newsFullDescription");
+        const imageInput = document.getElementById("newsImage");
+        const featuredInput = document.getElementById("newsFeatured");
+        const statusInput = document.getElementById("newsStatus");
+
+        const state = {
+            items: [],
+            editingId: null,
+            currentImage: ""
+        };
+
+        const isLocalHost = /^(localhost|127\.0\.0\.1)$/i.test(window.location.hostname || "");
+        const isFileProtocol = window.location.protocol === "file:";
+        const isLikelyPreviewPort =
+            isLocalHost && window.location.port && window.location.port !== "3000";
+
+        const showNotice = (element, type, text) => {
+            if (!element) return;
+            if (!text) {
+                element.textContent = "";
+                element.className = "notice info hidden";
+                return;
+            }
+            element.textContent = text;
+            element.className = `notice ${type}`;
+        };
+
+        const formatDate = (isoText) => {
+            const date = new Date(isoText);
+            if (Number.isNaN(date.getTime())) return "N/A";
+            return date.toLocaleString();
+        };
+
+        const request = async (url, options = {}) => {
+            const { method = "GET", body = null, isFormData = false } = options;
+            const config = {
+                method,
+                credentials: "include",
+                headers: {
+                    Accept: "application/json"
+                }
+            };
+
+            if (body) {
+                if (isFormData) {
+                    config.body = body;
+                } else {
+                    config.headers["Content-Type"] = "application/json";
+                    config.body = JSON.stringify(body);
+                }
+            }
+
+            if ((isFileProtocol || isLikelyPreviewPort) && typeof url === "string" && url.startsWith("/api/")) {
+                throw new Error("API server not reached. Open with http://127.0.0.1:3000/admin-news.html and keep Node server running.");
+            }
+
+            const response = await fetch(url, config);
+            let payload = null;
+            try {
+                payload = await response.json();
+            } catch {
+                payload = null;
+            }
+
+            if (!response.ok) {
+                const contentType = String(response.headers.get("content-type") || "").toLowerCase();
+                let message = payload?.message || `Request failed with status ${response.status}.`;
+
+                if ((response.status === 404 || response.status === 405) && !payload && !contentType.includes("application/json")) {
+                    message = "API server not reached. Open with http://127.0.0.1:3000/admin-news.html and keep Node server running.";
+                }
+
+                const fieldErrors = payload?.fieldErrors;
+                const error = new Error(message);
+                error.fieldErrors = fieldErrors;
+                throw error;
+            }
+
+            return payload;
+        };
+
+        const setAuthenticatedUI = (isAuthenticated) => {
+            loginSection.classList.toggle("hidden", isAuthenticated);
+            dashboardSection.classList.toggle("hidden", !isAuthenticated);
+            logoutBtn.classList.toggle("hidden", !isAuthenticated);
+        };
+
+        const resetForm = () => {
+            state.editingId = null;
+            state.currentImage = "";
+            newsForm.reset();
+            formHeading.textContent = "Add News";
+            submitBtn.textContent = "Create News";
+            showNotice(formNotice, "info", "");
+        };
+
+        const setEditMode = (item) => {
+            state.editingId = item.id;
+            state.currentImage = item.image || "";
+            formHeading.textContent = `Edit News #${item.id}`;
+            submitBtn.textContent = "Update News";
+
+            titleInput.value = item.title || "";
+            categoryInput.value = item.category || "";
+            shortDescriptionInput.value = item.shortDescription || "";
+            fullDescriptionInput.value = item.fullDescription || "";
+            featuredInput.checked = Boolean(item.featured);
+            statusInput.value = item.status || "draft";
+            imageInput.value = "";
+
+            window.scrollTo({ top: 0, behavior: "smooth" });
+        };
+
+        const renderRows = () => {
+            if (!state.items.length) {
+                newsTableBody.innerHTML = '<tr><td colspan="6" class="muted">No news available.</td></tr>';
+                return;
+            }
+
+            newsTableBody.innerHTML = "";
+
+            for (const item of state.items) {
+                const row = document.createElement("tr");
+
+                const titleCell = document.createElement("td");
+                titleCell.innerHTML = `<strong>${item.title || "Untitled"}</strong><div class="muted">/${item.slug || "-"}</div>`;
+
+                const categoryCell = document.createElement("td");
+                categoryCell.textContent = item.category || "-";
+
+                const statusCell = document.createElement("td");
+                statusCell.innerHTML = `<span class="tag ${item.status === "published" ? "published" : "draft"}">${item.status || "draft"}</span>`;
+
+                const featuredCell = document.createElement("td");
+                featuredCell.innerHTML = item.featured ? '<span class="tag featured">Featured</span>' : "-";
+
+                const dateCell = document.createElement("td");
+                dateCell.textContent = formatDate(item.publishDate || item.createdAt);
+
+                const actionCell = document.createElement("td");
+                const editButton = document.createElement("button");
+                editButton.type = "button";
+                editButton.className = "ghost";
+                editButton.textContent = "Edit";
+                editButton.addEventListener("click", () => setEditMode(item));
+
+                const deleteButton = document.createElement("button");
+                deleteButton.type = "button";
+                deleteButton.className = "danger";
+                deleteButton.textContent = "Delete";
+                deleteButton.addEventListener("click", () => handleDelete(item));
+
+                actionCell.appendChild(editButton);
+                actionCell.appendChild(document.createTextNode(" "));
+                actionCell.appendChild(deleteButton);
+
+                row.appendChild(titleCell);
+                row.appendChild(categoryCell);
+                row.appendChild(statusCell);
+                row.appendChild(featuredCell);
+                row.appendChild(dateCell);
+                row.appendChild(actionCell);
+                newsTableBody.appendChild(row);
+            }
+        };
+
+        const loadNews = async () => {
+            showNotice(listNotice, "info", "Loading news...");
+            const response = await request("/api/admin/news");
+            state.items = Array.isArray(response?.data) ? response.data : [];
+            renderRows();
+            if (state.items.length) {
+                showNotice(listNotice, "success", `${state.items.length} article(s) loaded.`);
+            } else {
+                showNotice(listNotice, "info", "No news available.");
+            }
+        };
+
+        const handleDelete = async (item) => {
+            const confirmed = window.confirm(`Delete "${item.title}"?`);
+            if (!confirmed) return;
+
+            try {
+                await request(`/api/admin/news/${item.id}`, { method: "DELETE" });
+                showNotice(listNotice, "success", "News deleted successfully.");
+                if (state.editingId === item.id) {
+                    resetForm();
+                }
+                await loadNews();
+            } catch (error) {
+                showNotice(listNotice, "error", error.message);
+            }
+        };
+
+        loginForm.addEventListener("submit", async (event) => {
+            event.preventDefault();
+            showNotice(loginNotice, "info", "Signing in...");
+            try {
+                const username = document.getElementById("loginUsername").value.trim();
+                const password = document.getElementById("loginPassword").value;
+                await request("/api/admin/login", {
+                    method: "POST",
+                    body: { username, password }
+                });
+                setAuthenticatedUI(true);
+                showNotice(loginNotice, "success", "Login successful.");
+                await loadNews();
+            } catch (error) {
+                showNotice(loginNotice, "error", error.message);
+            }
+        });
+
+        logoutBtn.addEventListener("click", async () => {
+            try {
+                await request("/api/admin/logout", { method: "POST" });
+            } catch {
+                // Ignore logout failures and still reset UI.
+            }
+            setAuthenticatedUI(false);
+            state.items = [];
+            renderRows();
+            resetForm();
+            showNotice(loginNotice, "info", "You are logged out.");
+        });
+
+        resetBtn.addEventListener("click", () => {
+            resetForm();
+        });
+
+        newsForm.addEventListener("submit", async (event) => {
+            event.preventDefault();
+            showNotice(formNotice, "info", state.editingId ? "Updating news..." : "Creating news...");
+
+            const formData = new FormData();
+            formData.append("title", titleInput.value.trim());
+            formData.append("category", categoryInput.value.trim());
+            formData.append("shortDescription", shortDescriptionInput.value.trim());
+            formData.append("fullDescription", fullDescriptionInput.value.trim());
+            formData.append("status", statusInput.value);
+            formData.append("featured", String(featuredInput.checked));
+
+            const file = imageInput.files && imageInput.files[0];
+            if (file) {
+                formData.append("image", file);
+            } else if (state.currentImage) {
+                formData.append("image", state.currentImage);
+            }
+
+            try {
+                if (state.editingId) {
+                    await request(`/api/admin/news/${state.editingId}`, {
+                        method: "PUT",
+                        body: formData,
+                        isFormData: true
+                    });
+                    showNotice(formNotice, "success", "News updated successfully.");
+                } else {
+                    await request("/api/admin/news", {
+                        method: "POST",
+                        body: formData,
+                        isFormData: true
+                    });
+                    showNotice(formNotice, "success", "News created successfully.");
+                }
+
+                resetForm();
+                await loadNews();
+            } catch (error) {
+                const details = error.fieldErrors && typeof error.fieldErrors === "object"
+                    ? ` ${Object.entries(error.fieldErrors).map(([k, v]) => `${k}: ${v}`).join(" | ")}`
+                    : "";
+                showNotice(formNotice, "error", `${error.message}${details}`);
+            }
+        });
+
+        const init = async () => {
+            try {
+                await request("/api/admin/session");
+                setAuthenticatedUI(true);
+                await loadNews();
+            } catch {
+                setAuthenticatedUI(false);
+                showNotice(loginNotice, "info", "Please login to manage news.");
+            }
+        };
+
+        init();
+    </script>
+</body>
+</html>

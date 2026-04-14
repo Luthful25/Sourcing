@@ -1,0 +1,457 @@
+.trust-page {
+    background:
+        radial-gradient(circle at 12% 0%, rgba(214, 177, 101, 0.2), transparent 28%),
+        linear-gradient(180deg, #f7f5f1 0%, #f1f1f1 100%);
+}
+
+.trust-main {
+    padding-bottom: 4.5rem;
+}
+
+.trust-hero {
+    position: relative;
+    isolation: isolate;
+    border-bottom: 1px solid rgba(27, 32, 44, 0.1);
+    background: #ede8df;
+}
+
+.trust-hero::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: -2;
+    background:
+        linear-gradient(180deg, rgba(238, 231, 222, 0.8), rgba(238, 231, 222, 0.92)),
+        url("assets/equalstock-tNXHjidQ7Lk-unsplash.jpg") center/cover no-repeat;
+}
+
+.trust-hero::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    background:
+        radial-gradient(circle at 18% 22%, rgba(255, 255, 255, 0.35), transparent 42%),
+        radial-gradient(circle at 82% 72%, rgba(31, 97, 216, 0.12), transparent 48%);
+}
+
+.trust-hero-inner {
+    text-align: center;
+    padding: 4.1rem 0 3.5rem;
+}
+
+.trust-breadcrumb {
+    margin-bottom: 0.68rem;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.56rem;
+    color: #5f6572;
+    font-size: 0.8rem;
+    font-weight: 500;
+}
+
+.trust-breadcrumb a:hover {
+    color: #262d3d;
+}
+
+.trust-hero h1 {
+    margin: 0;
+    color: #243248;
+    font-size: clamp(2rem, 4.1vw, 3.3rem);
+    font-weight: 700;
+    letter-spacing: -0.02em;
+}
+
+.trust-hero p {
+    margin: 0.9rem auto 0;
+    max-width: 56ch;
+    color: #495365;
+    font-size: clamp(0.94rem, 1.45vw, 1.08rem);
+    line-height: 1.62;
+}
+
+.trust-overview,
+.trust-quality,
+.trust-social-certs,
+.trust-material-certs,
+.trust-policies {
+    padding: 2.7rem 0 0;
+}
+
+.trust-overview-inner {
+    width: min(1060px, calc(100% - 52px));
+    margin: 0 auto;
+    text-align: center;
+}
+
+.trust-rule {
+    display: inline-block;
+    width: 26px;
+    height: 2px;
+    border-radius: 999px;
+    background: #7b70bd;
+    margin-bottom: 0.8rem;
+}
+
+.trust-quality-head h2,
+.trust-policy-copy h2 {
+    margin: 0;
+    color: #1e2431;
+    font-size: clamp(1.5rem, 2.5vw, 2.2rem);
+    font-weight: 700;
+    letter-spacing: -0.02em;
+}
+
+.trust-overview p {
+    margin: 0 auto;
+    max-width: 102ch;
+    color: #444c5b;
+    font-size: 0.96rem;
+    line-height: 1.8;
+}
+
+.trust-quality {
+    margin-top: 1.3rem;
+    padding: 3.1rem 0 3.05rem;
+    background: #efefef;
+    border-top: 1px solid rgba(23, 30, 44, 0.06);
+    border-bottom: 1px solid rgba(23, 30, 44, 0.06);
+}
+
+.trust-quality-head {
+    text-align: center;
+    margin-bottom: 2.3rem;
+}
+
+.trust-quality .trust-quality-head h2 {
+    font-size: clamp(2.05rem, 3vw, 3.3rem);
+    letter-spacing: -0.015em;
+}
+
+.trust-quality-head p {
+    margin: 0.9rem auto 0;
+    max-width: 82ch;
+    color: #343d4f;
+    font-size: clamp(0.98rem, 1.2vw, 1.1rem);
+    line-height: 1.72;
+}
+
+.trust-quality-grid {
+    width: min(1320px, calc(100% - 52px));
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 2rem;
+}
+
+.trust-quality-card {
+    text-align: center;
+}
+
+.trust-quality-logo {
+    min-height: 236px;
+    display: grid;
+    place-items: center;
+    border-radius: 10px;
+    background: #f6f6f6;
+    border: 1px solid rgba(28, 36, 52, 0.05);
+    padding: 0.95rem;
+}
+
+.trust-quality-logo svg {
+    display: block;
+    max-width: 100%;
+    height: auto;
+}
+
+.trust-quality-logo-gsv svg {
+    width: min(100%, 216px);
+}
+
+.trust-quality-logo-iso9001 {
+    background: #f6f6f6;
+    border: 1px solid rgba(28, 36, 52, 0.05);
+}
+
+.trust-quality-logo-iso9001 svg {
+    width: min(100%, 246px);
+}
+
+.trust-quality-logo-iso13485 {
+    background: #f6f6f6;
+    border: 1px solid rgba(28, 36, 52, 0.05);
+}
+
+.trust-quality-logo-iso13485 svg {
+    width: min(100%, 220px);
+}
+
+.trust-quality-card h3 {
+    margin: 1.05rem 0 0;
+    color: #2b3342;
+    font-size: clamp(1.52rem, 2vw, 2.15rem);
+    font-weight: 700;
+    line-height: 1.08;
+    letter-spacing: -0.012em;
+}
+
+.trust-social-certs,
+.trust-material-certs {
+    margin-top: 2.15rem;
+}
+
+.trust-certificate-grid {
+    width: min(1180px, calc(100% - 52px));
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 1.15rem;
+}
+
+.trust-certificate-grid-three {
+    margin-bottom: 1.1rem;
+}
+
+.trust-certificate-card {
+    text-align: center;
+}
+
+.trust-certificate-logo {
+    min-height: 140px;
+    display: grid;
+    place-items: center;
+    border-radius: 8px;
+    background: #f7f7f7;
+    border: 1px solid rgba(24, 31, 44, 0.05);
+    padding: 0.8rem;
+}
+
+.trust-certificate-logo svg {
+    width: 138px;
+    height: 96px;
+}
+
+.trust-certificate-card h3 {
+    margin: 0.7rem 0 0;
+    color: #232b3a;
+    font-size: 1.2rem;
+    font-weight: 700;
+    letter-spacing: -0.01em;
+}
+
+.trust-better-work-logo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+}
+
+.trust-better-work-logo span {
+    width: 42px;
+    height: 42px;
+    position: relative;
+    display: inline-block;
+}
+
+.trust-better-work-logo span::before,
+.trust-better-work-logo span::after {
+    content: "";
+    position: absolute;
+    width: 16px;
+    height: 16px;
+    transform: rotate(45deg);
+}
+
+.trust-better-work-logo span::before {
+    left: 5px;
+    top: 13px;
+    background: #c9491f;
+}
+
+.trust-better-work-logo span::after {
+    left: 20px;
+    top: 5px;
+    background: #e9b10e;
+}
+
+.trust-better-work-logo strong {
+    color: #7b1f2e;
+    font-size: 1.9rem;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+}
+
+.trust-oeko-step,
+.trust-oeko-standard {
+    color: #fff;
+    background: #0d9d90;
+    border-radius: 8px;
+    width: 74px;
+    height: 88px;
+    margin: 0 auto;
+    display: grid;
+    align-content: center;
+    justify-items: center;
+    gap: 0.08rem;
+    border: 0;
+    min-height: auto;
+    padding: 0;
+}
+
+.trust-oeko-step span,
+.trust-oeko-standard span {
+    display: block;
+    font-size: 1.12rem;
+    line-height: 1;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+}
+
+.trust-oeko-step small,
+.trust-oeko-standard small {
+    display: block;
+    margin-top: 0.16rem;
+    font-size: 0.76rem;
+    line-height: 1.08;
+    font-weight: 700;
+}
+
+.trust-oeko-standard {
+    background: #0b9b8f;
+}
+
+.trust-policy-layout {
+    width: min(1180px, calc(100% - 52px));
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.1rem;
+    align-items: stretch;
+}
+
+.trust-policy-copy,
+.trust-policy-list {
+    padding: 1.28rem 1.16rem;
+    border-radius: 12px;
+    background: #fff;
+    border: 1px solid rgba(26, 32, 44, 0.1);
+}
+
+.trust-policy-copy p {
+    margin: 0.7rem 0 0;
+    color: #535b69;
+    font-size: 0.93rem;
+    line-height: 1.68;
+}
+
+.trust-policy-cta {
+    margin-top: 1rem;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 40px;
+    padding: 0.56rem 1.02rem;
+    border-radius: 8px;
+    background: #f4c542;
+    border: 1px solid #f4c542;
+    color: #252a31;
+    font-size: 0.87rem;
+    font-weight: 700;
+    transition: background 0.2s ease, border-color 0.2s ease, transform 0.2s ease;
+}
+
+.trust-policy-cta:hover {
+    background: #f1be2b;
+    border-color: #f1be2b;
+    transform: translateY(-1px);
+}
+
+.trust-policy-list h3 {
+    margin: 0;
+    color: #243247;
+    font-size: 1.06rem;
+    font-weight: 700;
+}
+
+.trust-policy-list ul {
+    margin: 0.7rem 0 0;
+    padding: 0 0 0 1.1rem;
+}
+
+.trust-policy-list li {
+    margin-bottom: 0.5rem;
+    color: #566071;
+    font-size: 0.92rem;
+    line-height: 1.52;
+}
+
+@media (max-width: 980px) {
+    .trust-quality-grid {
+        width: min(1180px, calc(100% - 34px));
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 1.4rem;
+    }
+
+    .trust-quality-logo {
+        min-height: 214px;
+    }
+
+    .trust-quality-card h3 {
+        font-size: clamp(1.35rem, 2.5vw, 1.8rem);
+    }
+
+    .trust-certificate-grid {
+        width: min(1180px, calc(100% - 34px));
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .trust-policy-layout {
+        width: min(1180px, calc(100% - 34px));
+        grid-template-columns: 1fr;
+    }
+
+    .trust-overview-inner {
+        width: min(1060px, calc(100% - 34px));
+    }
+}
+
+@media (max-width: 640px) {
+    .trust-hero-inner {
+        padding: 3.7rem 0 3rem;
+    }
+
+    .trust-overview,
+    .trust-quality,
+    .trust-policies {
+        padding-top: 2rem;
+    }
+
+    .trust-quality-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .trust-certificate-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .trust-quality {
+        margin-top: 1.7rem;
+        padding: 2.3rem 0 2.2rem;
+    }
+
+    .trust-quality-logo {
+        min-height: 192px;
+    }
+
+    .trust-quality .trust-quality-head h2 {
+        font-size: clamp(1.75rem, 7vw, 2.25rem);
+    }
+
+    .trust-quality-card h3 {
+        font-size: 1.25rem;
+    }
+
+    .trust-certificate-card h3 {
+        font-size: 1.1rem;
+    }
+}

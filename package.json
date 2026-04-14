@@ -1,0 +1,19 @@
+{
+  "name": "empior-site-backend",
+  "version": "1.0.0",
+  "description": "Empior website with Express contact form backend",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node server.js",
+    "test": "node --test --test-isolation=none tests/auth-token.test.js tests/news-validation.test.js tests/env-security.test.js",
+    "migrate:sqlite-news": "node scripts/migrate-sqlite-news-to-mysql.js"
+  },
+  "dependencies": {
+    "dotenv": "^16.6.1",
+    "express": "^5.1.0",
+    "multer": "^2.1.1",
+    "mysql2": "^3.22.0",
+    "nodemailer": "^7.0.5"
+  }
+}
